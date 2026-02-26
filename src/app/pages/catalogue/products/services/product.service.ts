@@ -37,7 +37,7 @@ export class ProductService {
     const params = {
       lang: localStorage.getItem('lang') || 'en'
     };
-    return this.crudService.get(`/v1/private/product/${id}`, params);
+    return this.crudService.get(`/v2/private/product/${id}`, params);
   }
 
   getProductDefinitionById(id): Observable<any> {
