@@ -3,7 +3,7 @@
   "scripts": {
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
-    "start": "ng serve",
+    "start": "NODE_OPTIONS='--max-http-header-size=16000' ng serve",
     "build": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --prod",
     "test": "ng test",
     "test:coverage": "rimraf coverage && npm run test -- --code-coverage",
@@ -110,7 +110,9 @@
     "@types/googlemaps": "3.39.13",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "^2.0.10",
+    "@types/jquery": "^3.5.14",
     "@types/leaflet": "1.2.3",
+    "@types/minimatch": "^5.1.2",
     "@types/node": "^12.20.36",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",

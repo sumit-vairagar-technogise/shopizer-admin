@@ -35,14 +35,14 @@ export class ProductService {
 
   getProductById(id): Observable<any> {
     const params = {
-      lang: '_all'
+      lang: localStorage.getItem('lang') || 'en'
     };
-    return this.crudService.get(`/v1/product/${id}`, params);
+    return this.crudService.get(`/v1/private/product/${id}`, params);
   }
 
   getProductDefinitionById(id): Observable<any> {
     const params = {
-      lang: '_all'
+      lang: localStorage.getItem('lang') || 'en'
     };
     return this.crudService.get(`/v2/private/product/definition/${id}`, params);
   }
