@@ -19,9 +19,22 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
+    // Use v2 product endpoint directly - definition endpoint doesn't exist
     this.productService.getProductById(id)
       .subscribe(res => {
-        this.product = res;
+        // Flatten nested structure to match form expectations
+        this.product = {
+          ...res,
+          // Extract price as number from inventory
+          price: res.inventory?.prices?.[0]?.finalPrice 
+            ? parseFloat(res.inventory.prices[0].finalPrice.replace(/[^0-9.]/g, ''))
+            : res.inventory?.price 
+            ? parseFloat(res.inventory.price.replace(/[^0-9.]/g, ''))
+            : null,
+          quantity: res.inventory?.quantity,
+          // Convert single description object to descriptions array
+          descriptions: res.description ? [res.description] : [],
+        };
       });
   }
 

@@ -99,6 +99,9 @@ export class ImageUploadingComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    if (!this.placeholder || !this.placeholder.element) {
+      return;
+    }
     const phElement = this.placeholder.element.nativeElement;
 
     phElement.style.display = 'none';
